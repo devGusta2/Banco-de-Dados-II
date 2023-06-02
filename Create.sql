@@ -1,30 +1,27 @@
-CREATE DATABASE bdEscolaIdiomas1
+CREATE DATABASE bdLivraria
+GO
+USE bdLivraria
 
-USE bdEscolaIdiomas1
+CREATE TABLE tbAutor(
+	codAutor INT PRIMARY KEY IDENTITY(1,1)
+	,nomeAutor VARCHAR(50)
+)
 
---DROP DATABASE bdEscolaIdioma
-CREATE TABLE tbAluno(
-	codAluno INT PRIMARY KEY IDENTITY(1,1)
-	,nomeAluno VARCHAR(50)
-	,rgAluno VARCHAR(12) 
-	,dataNascimentoAluno SMALLDATETIME
-	,naturalidadeAluno VARCHAR(2)
+CREATE TABLE tbGenero(
+	codGenero INT PRIMARY KEY IDENTITY(1,1)
+	,nomeGenero VARCHAR(50)
 )
-CREATE TABLE tbCurso(
-	codCurso INT PRIMARY KEY IDENTITY(1,1)
-	,nomeCurso VARCHAR(20)
-	,cargahorariaCurso BIGINT
-	,valorCurso BIGINT
+
+CREATE TABLE tbEditora(
+	codEditora INT PRIMARY KEY IDENTITY(1,1)
+	,nomeEditora VARCHAR(50)
 )
-CREATE TABLE tbTurma(
-	codTurma INT PRIMARY KEY IDENTITY(1,1)
-	,nomeTurma VARCHAR(20)
-	,horarioTurma TIME
-	,codCurso INT FOREIGN KEY REFERENCES tbCurso (codCurso)
-)
-CREATE TABLE tbMatricula(
-	codMatricula INT PRIMARY KEY IDENTITY(1,1)
-	,dataMatricula DATETIME
-	,codAluno INT FOREIGN KEY REFERENCES tbAluno (codAluno)
-	,codTurma INT FOREIGN KEY REFERENCES tbTurma (codTurma)
+
+CREATE TABLE tbLivro(
+	codLivro INT PRIMARY KEY IDENTITY(1,1)
+	,nomeLivro VARCHAR(50)
+	,numPaginas VARCHAR (500)
+	,codGenero INT FOREIGN KEY REFERENCES tbGenero (codGenero)
+	,codAutor INT FOREIGN KEY REFERENCES tbAutor (codAutor)
+	,codEditora INT FOREIGN KEY REFERENCES tbEditora (codEditora)
 )
