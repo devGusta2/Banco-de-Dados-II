@@ -1,56 +1,70 @@
-USE bdEscolaIdiomas1
+USE bdLojaRoupas
 
-SET IDENTITY_INSERT tbAluno ON
+SET IDENTITY_INSERT tbVendedor ON
 
-INSERT INTO tbAluno( codAluno,nomeAluno,dataNascimentoAluno,rgAluno,naturalidadeAluno)
-VALUES('1','Paulo Santos','2000-03-10','822821220','SP')
-	 ,('2','Maria da Gloria','1998-10-03','452331230','SP')
-	 ,('3','Pedro Nogueira da Silva','1999-04-04','235332119','SP')
-	 ,('4','Gilson Barros Silva','1995-09-09','34221111x','PE')
-	 ,('5','Mariana Barbosa Santos ','2001-10-10','542221229','RJ')
-	 ,('6','Alessandro Pereira','2003-10-11','244024549','ES')
-	 ,('7','Aline Melo','2001-10-08','883650123','RJ')
-	 
-SET IDENTITY_INSERT tbAluno OFF
+INSERT INTO tbVendedor( codVendedor,nomeVendedor)
+VALUES('1','João Santana')
+	,('2','Raquel Torres')
+	,('3','Rodrigo Garcia')
+	,('4','Rafael Moura')
 
-SET IDENTITY_INSERT tbCurso ON
+SET IDENTITY_INSERT tbVendedor OFF
 
-INSERT INTO tbCurso( codCurso,nomeCurso,cargahorariaCurso,valorCurso)
-VALUES('1','Inglês',2000,356.00)
-	 ,('2','Alemão',3000,478.00)
-	 ,('3','Espanhol',4000,500.00)
+SET IDENTITY_INSERT tbFabricante ON
 
-	 
-SET IDENTITY_INSERT tbCurso OFF
+INSERT INTO tbFabricante( codFabricante,nomeFabricante)
+VALUES('1','Malwee')
+	,('2','Marisol')
+	,('3','Cia de Malha')
 
-SET IDENTITY_INSERT tbTurma ON
+SET IDENTITY_INSERT tbFabricante OFF
 
-INSERT INTO tbTurma( codTurma,nomeTurma,codCurso,horarioTurma)
-VALUES('1','1|A','1','12:00:00')
-	 ,('2','1|C','3','18:00:00')
-	 ,('3','1|B','1','18:00:00')
-	 ,('4','1AA','2','19:00:00')
+SET IDENTITY_INSERT tbCliente ON
 
-	 
-SET IDENTITY_INSERT tbTurma OFF
+INSERT INTO tbCliente( codCliente,nomeCliente, idadeCliente)
+VALUES('1','Johnny Silver','19')
+	,('2','Joseph Silva','25')
+	,('3','Jolyne Jhonson','18')
+	,('4','Lisa Joestar','55')
+	,('5','Suzi Quik','35')
 
-SET IDENTITY_INSERT tbMatricula ON
+SET IDENTITY_INSERT tbCliente OFF
 
-INSERT INTO tbMatricula( codMatricula,dataMatricula,codAluno,codTurma)
-VALUES('1','2015-10-03','1','1')
-	 ,('2','2014-05-04','2','1')
-	 ,('3','2014-05-04','2','4')
-	 ,('4','2012-05-03','3','2')
-	 ,('5','2016-03-03','1','3')
-	 ,('6','2015-05-07','4','2')
-	 ,('7','2015-07-05','4','3')
 
-	 
-SET IDENTITY_INSERT tbMatricula OFF
+SET IDENTITY_INSERT tbVenda ON
 
-DROP TABLE tbMatricula
+INSERT INTO tbVenda( codVenda,dataVenda, totalVendas, codCliente, codVendedor)
+VALUES('1','2022-05-10 00:00:00','139.99','1','2')
+	,('2','2022-05-05 00:00:00','130.99','2','1')
+	,('3','2022-04-25 00:00:00','200.10','3','2')
+	,('4','2022-04-15 00:00:00','89.99','4','1')
+	,('5','2022-02-20 00:00:00','99.99','5','2')
 
-SELECT * FROM tbAluno
-SELECT * FROM tbCurso
-SELECT * FROM tbTurma
-SELECT * FROM tbMatricula
+SET IDENTITY_INSERT tbVenda OFF
+
+SET IDENTITY_INSERT tbProduto ON
+
+INSERT INTO tbProduto( codProduto,nomeProduto,precoProduto,dataEntradaProduto,idFuncionario,codFabricante)
+VALUES('1','Camiseta Preta','20.39','2022-02-21 00:00:00','1','1')
+	,('2','Moleton Cinza','75.49','2022-03-15 00:00:00','2','1')
+	,('3','Calça Feminina','80.39','2022-04-21 00:00:00','1','1')
+	,('4','Camiseta Slim','95.49','2022-05-10 00:00:00','2','2')
+	,('5','Vestido Hype','105.99','2022-05-10 00:00:00','1','2')
+	,('6','Jaqueta WRM','100.99','2022-04-15 00:00:00','2','2')
+	,('7','Pijama Inverno','39.49','2022-04-20 00:00:00','1','3')
+	,('8','Roupão Fleece','125.49','2022-04-20 00:00:00','2','3')
+	,('9','Macacão Pijama','109.99','2022-04-20 00:00:00','1','3')
+
+SET IDENTITY_INSERT tbProduto OFF
+
+SET IDENTITY_INSERT tbItensVenda ON
+
+INSERT INTO tbItensVenda( codItensVenda,quantidadeItens,subTotalItens,codVenda,codProduto)
+VALUES('1','2','205','1','9')
+	,('2','2','100','2','7')
+	,('3','2','99','3','5')
+	,('4','2','149','4','3')
+	,('5','2','80','5','1')
+
+SET IDENTITY_INSERT tbItensVenda OFF
+
