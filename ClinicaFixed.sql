@@ -220,3 +220,17 @@ FROM tbMedico
 JOIN tbConsulta ON tbMedico.idMedico = tbConsulta.idMedico
 JOIN tbPaciente ON tbPaciente.cpfPaciente = tbConsulta.cpfPaciente;
 
+
+
+CREATE VIEW vwConsultasMedicas AS
+SELECT 
+    tbMedico.nomeMedico, 
+    tbPaciente.nomePaciente, 
+    tbConsulta.dataConsulta, 
+    tbConsulta.horarioConsulta
+FROM 
+    tbConsulta
+JOIN 
+    tbMedico ON tbMedico.idMedico = tbConsulta.idMedico
+JOIN 
+    tbPaciente ON tbPaciente.cpfPaciente = tbConsulta.cpfPaciente;
